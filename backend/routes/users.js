@@ -8,7 +8,7 @@ const {
   updateUserProfile,
   getCurrentUser,
 } = require('../controllers/users');
-const auth = require('../middlewares/auth');
+const auth = require('../middleware/auth');
 
 const router = Router();
 

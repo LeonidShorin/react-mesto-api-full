@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 require('dotenv').config();
 
 const express = require('express');
@@ -7,9 +6,9 @@ const helmet = require('helmet');
 const { celebrate } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const { signinValidationSchema, signupValidationSchema } = require('./middlewares/validationSchema');
+const { signinValidationSchema, signupValidationSchema } = require('./middleware/validationSchema');
 const NotFoundError = require('./errors/NotFoundError');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middleware/logger');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -17,8 +16,8 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const login = require('./controllers/login');
 const { createUser } = require('./controllers/users');
-const auth = require('./middlewares/auth');
-const { celebrateErrorHandler, generalErrorHandler } = require('./middlewares/errorHandler');
+const auth = require('./middleware/auth');
+const { celebrateErrorHandler, generalErrorHandler } = require('./middleware/errorHandler');
 
 async function start() {
   await mongoose.connect('mongodb://localhost:27017/mestodb', {
@@ -45,11 +44,6 @@ start()
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
     app.use(requestLogger);
-    app.get('/crash-test', () => {
-      setTimeout(() => {
-        throw new Error('Сервер сейчас упадёт');
-      }, 0);
-    });
     app.post('/signin', celebrate(signinValidationSchema), login);
     app.post('/signup', celebrate(signupValidationSchema), createUser);
     app.use(userRouter);

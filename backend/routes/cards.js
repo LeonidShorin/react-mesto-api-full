@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { celebrate, Joi } = require('celebrate');
-const auth = require('../middlewares/auth');
+const auth = require('../middleware/auth');
 
 const router = Router();
 
