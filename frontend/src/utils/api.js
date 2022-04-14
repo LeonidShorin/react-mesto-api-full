@@ -63,7 +63,7 @@ class Api {
       });
   }
 
-  addCard({name, link}, jwt) {
+  addNewCard({name, link}, jwt) {
     return fetch(this._URL + '/cards', {
       method: 'POST',
       headers: {
@@ -90,7 +90,7 @@ class Api {
       });
   }
 
-  addLike(cardId, jwt) {
+  likeCard(cardId, jwt) {
     return fetch(this._URL + '/cards/' + cardId + '/likes/', {
       method: 'PUT',
       headers: {
@@ -103,7 +103,7 @@ class Api {
       });
   }
 
-  removeLike(cardId, jwt) {
+  dislikeCard(cardId, jwt) {
     return fetch(this._URL + '/cards/' + cardId + '/likes/', {
       method: 'DELETE',
       headers: {

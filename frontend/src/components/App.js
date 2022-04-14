@@ -77,7 +77,6 @@ function App() {
     isLoggedIn ? navigate('/') : navigate('/sign-in');
   }, [isLoggedIn])
 
-
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
@@ -109,7 +108,7 @@ function App() {
   function handleUpdateUser(name, description) {
     setIsLoading(true);
     const jwt = localStorage.getItem('jwt');
-    api.editProfile({ name, description }, jwt)
+    api.editProfile({name, description}, jwt)
       .then(res => {
         setCurrentUser(res);
         closeAllPopups();
@@ -142,7 +141,7 @@ function App() {
     const isLiked = card.likes.some(i => i === currentUser._id);
     const jwt = localStorage.getItem('jwt');
     if (!isLiked) {
-      api.addLike(card._id, jwt)
+      api.likeCard(card._id, jwt)
         .then((newCard) => {
           setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
         })
@@ -150,7 +149,7 @@ function App() {
           console.log(err)
         });
     } else {
-      api.removeLike(card._id, jwt)
+      api.dislikeCard(card._id, jwt)
         .then((newCard) => {
           setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
         })
@@ -183,7 +182,7 @@ function App() {
   function handleAddPlaceSubmit(name, link) {
     const jwt = localStorage.getItem('jwt');
     setIsLoading(true);
-    api.addCard({ name, link }, jwt)
+    api.addNewCard({name, link}, jwt)
       .then(newCard => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -225,7 +224,6 @@ function App() {
         setEmail(data.email);
         setIsInfoToolTipOpen(true);
         setRegisterSuccessful(true);
-        setIsLoggedIn(true);
       })
       .catch((err) => {
         console.log(err);
