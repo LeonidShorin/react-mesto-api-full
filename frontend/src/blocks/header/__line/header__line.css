@@ -1,0 +1,24 @@
+.header__line {
+  background: url(../../../images/Line.svg);
+  min-height: 1px;
+  min-width: 100%;
+  margin: 41px auto 0;
+}
+
+@media screen and (max-width: 1135px) {
+  .header__line {
+    max-width: 800px;
+  }
+}
+
+@media screen and (max-width: 997px) {
+  .header__line {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .header__line {
+    max-width: 100%;
+  }
+}

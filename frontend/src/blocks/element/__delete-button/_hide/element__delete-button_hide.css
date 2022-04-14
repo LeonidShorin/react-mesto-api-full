@@ -1,0 +1,5 @@
+.element__delete-button_hide {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}

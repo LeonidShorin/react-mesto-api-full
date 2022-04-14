@@ -1,0 +1,21 @@
+.popup_type_card {
+  visibility: hidden;
+  opacity: 0;
+  
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .5);
+  min-width: 100%;
+  min-height: 100%;
+  left: 1px;
+}
+
+.popup__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  padding: 0;
+  width: 100%;
+}

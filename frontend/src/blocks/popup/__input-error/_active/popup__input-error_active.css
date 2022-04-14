@@ -1,0 +1,18 @@
+.popup__input-error_active {
+  
+  display: block;
+  max-width: 358px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: red;
+  text-align: left;
+  visibility: visible;
+}
+
+@media screen and (max-width: 980px) {
+  .popup__input-error_active {
+    max-width: 80%;
+  }
+}

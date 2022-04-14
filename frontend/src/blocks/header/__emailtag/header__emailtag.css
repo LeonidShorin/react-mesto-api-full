@@ -1,0 +1,13 @@
+.header__emailtag {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.22;
+  text-align: center;
+  padding-right: 24px;
+}
+
+@media screen and (max-width: 619px) {
+  .header__emailtag {
+    padding-right: 0;
+  }
+}

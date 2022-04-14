@@ -1,0 +1,30 @@
+.elements {
+  width: calc(100% - 383px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 46px auto 0;
+  min-height: 774px;
+}
+
+@media screen and (max-width: 1279px) {
+  .elements {
+    justify-content: space-between;
+  }
+  
+}
+
+@media screen and (max-width: 997px) {
+  .elements {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+}
+
+@media screen and (max-width: 690px) {
+  .elements {
+    width: calc(100% - 38px);
+    margin: 36px auto 0 auto;
+  }
+}

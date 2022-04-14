@@ -1,0 +1,12 @@
+.auth-form__input-error {
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 auto;
+  min-height: 25px;
+  text-align: left;
+  color: red;
+  display: block;
+  width: 358px;
+}
