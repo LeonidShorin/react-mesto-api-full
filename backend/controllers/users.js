@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 const bcrypt = require('bcryptjs');
 const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
@@ -28,11 +27,7 @@ const getUserById = (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new BadRequestError('Переданы некорректные данные'));
-      } else {
-        next(err);
-      }
+      next(err);
     });
 };
 
@@ -46,11 +41,7 @@ const getCurrentUser = (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new BadRequestError('Переданы некорректные данные'));
-      } else {
-        next(err);
-      }
+      next(err);
     });
 };
 const createUser = async (req, res, next) => {
@@ -98,6 +89,9 @@ const updateUserProfile = (req, res, next) => {
     about,
   } = req.body;
   const id = req.user._id;
+  if (!name || !about) {
+    throw new BadRequestError('Переданы некорректные данные для обновления данных пользователя.');
+  }
   User.findByIdAndUpdate(id, {
     name,
     about,
@@ -108,27 +102,20 @@ const updateUserProfile = (req, res, next) => {
     .then((user) => {
       res.send(user);
     })
-    .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
-        next(new BadRequestError('Переданы некорректные данные'));
-      } else {
-        next(err);
-      }
-    });
+    .catch((err) => next(err));
 };
 const updateUserAvatar = (req, res, next) => {
   const { avatar } = req.body;
   const id = req.user._id;
+  if (!avatar) {
+    throw new BadRequestError('Переданы некорректные данные для обновления аватара.');
+  }
   User.findByIdAndUpdate(id, { avatar }, { new: true, runValidators: true })
     .then((user) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
-        next(new BadRequestError('Переданы некорректные данные'));
-      } else {
-        next(err);
-      }
+      next(err);
     });
 };
 

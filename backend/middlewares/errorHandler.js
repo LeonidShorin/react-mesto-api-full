@@ -1,6 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable eol-last */
-/* eslint-disable linebreak-style */
 const { isCelebrateError } = require('celebrate');
 const { ERR_BAD_REQUEST } = require('../utils');
 const { ERR_SERVER_ERROR } = require('../utils');

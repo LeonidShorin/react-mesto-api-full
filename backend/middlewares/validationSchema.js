@@ -1,10 +1,6 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable eol-last */
-/* eslint-disable linebreak-style */
 const { Joi } = require('celebrate');
-// eslint-disable-next-line linebreak-style
 
-const signinValidationScheme = {
+const signinValidationSchema = {
   body: Joi.object().keys({
     email: Joi.string().email().label('Email').required()
       .messages({
@@ -22,7 +18,7 @@ const signinValidationScheme = {
   }),
 };
 
-const signupValidationScheme = {
+const signupValidationSchema = {
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30).label('Имя пользователя')
       .default('Жак-Ив Кусто')
@@ -65,6 +61,6 @@ const signupValidationScheme = {
 };
 
 module.exports = {
-  signinValidationScheme,
-  signupValidationScheme,
+  signinValidationSchema,
+  signupValidationSchema,
 };

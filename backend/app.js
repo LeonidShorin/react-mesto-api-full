@@ -7,7 +7,7 @@ const helmet = require('helmet');
 const { celebrate } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const { signinValidationScheme, signupValidationScheme } = require('./middlewares/validationScheme');
+const { signinValidationSchema, signupValidationSchema } = require('./middlewares/validationSchema');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -50,8 +50,8 @@ start()
         throw new Error('Сервер сейчас упадёт');
       }, 0);
     });
-    app.post('/signin', celebrate(signinValidationScheme), login);
-    app.post('/signup', celebrate(signupValidationScheme), createUser);
+    app.post('/signin', celebrate(signinValidationSchema), login);
+    app.post('/signup', celebrate(signupValidationSchema), createUser);
     app.use(userRouter);
     app.use(cardRouter);
     app.use(auth, (req, res, next) => {
