@@ -45,6 +45,11 @@ start()
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
     app.use(requestLogger);
+    app.get('/crash-test', () => {
+      setTimeout(() => {
+        throw new Error('Сервер сейчас упадёт');
+      }, 0);
+    });
     app.post('/signin', celebrate(signinValidationScheme), login);
     app.post('/signup', celebrate(signupValidationScheme), createUser);
     app.use(userRouter);
